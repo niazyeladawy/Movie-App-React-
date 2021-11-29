@@ -30,3 +30,66 @@ a:hover{
   background-color: #fff;
   height: 2px;
 }
+.flex-wrapper {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.single-chart {
+  width: 33%;
+  justify-content: flex-start ;
+}
+
+.circular-chart {
+  display: block;
+  max-width: 20%;
+  max-height: 250px;
+}
+
+.circle-bg {
+  fill: none;
+  stroke: #eee;
+  stroke-width: 3.8;
+}
+
+.circle {
+  fill: none;
+  stroke-width: 3.8;
+  stroke-linecap: round;
+  animation: progress 1s ease-out forwards;
+}
+
+@keyframes progress {
+  0% {
+    stroke-dasharray: 0 100;
+  }
+}
+
+.circular-chart.orange .circle {
+  stroke: red;
+}
+
+
+.percentage {
+  fill: #fff;
+  font-family: sans-serif;
+  font-size: 0.5em;
+  text-anchor: middle;
+}
+.carouselItem{
+  width: 80%;
+}
+.car-tex{
+  font-size: 12px;
+}
+.carouselItem{
+  cursor: pointer;
+}
+
+.keywords p{
+  background-color: #c35252;
+  display: inline-block;
+  margin: 5px;
+  font-size: 14px;
+  padding:5px 10px;
+}

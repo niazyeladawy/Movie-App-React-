@@ -4,13 +4,14 @@ import { Redirect, Route, Switch, useHistory } from 'react-router';
 import './App.css';
 import Home from './components/Home/Home';
 import Login from './components/Login/Login';
-import MovieDetails from './components/MovieDetails/MovieDetails';
+import MovieDetails from './components/MovieDetails/MovieDetails.js';
 import Movies from './components/Movies/Movies';
 import Navbar from './components/Navbar/Navbar';
 import People from './components/People/People';
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
 import Register from './components/Register/Register';
 import Tv from './components/Tv/Tv';
+import TvDetails from './components/TvDetails/TvDetails.js';
 import {  MoviesContextProvider } from './MoviesContext';
 
 
@@ -52,7 +53,9 @@ function App() {
           <ProtectedRoute path='/tv' component={Tv} contex={MoviesContextProvider}/>
           <ProtectedRoute path='/people' component={People} contex={MoviesContextProvider}/> 
           <ProtectedRoute path='/home' component={Home} loginUser={loginUser} contex={MoviesContextProvider}/> 
-          <ProtectedRoute path='/moviedetails' component={MovieDetails}/> 
+          <Route path="/show/:id" ><TvDetails/></Route>
+          <Route path="/movie/:id" ><MovieDetails/></Route>
+          
           <Route path='/register' render={(props) => <Register {...props} />} />
           <Route path='/login' render={(props) => <Login {...props} getUserInfo={getUserInfo} />} />
           <Redirect from='/' exact to='/home' />

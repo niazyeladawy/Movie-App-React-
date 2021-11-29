@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom';
 
 export default function Movies() {
     const [trendingMovies, setTrendingMovies] = useState([]);
@@ -27,10 +28,10 @@ export default function Movies() {
                 </div>
                 {trendingMovies.map((movie , idx) =>
                     <div key={idx} className="col-md-3 mb-3" >
-                        <div className="movie">
+                        <Link className="movie" to={`/movie/${movie.id}`}>
                             <img src={imgPrefix+movie.poster_path} alt={movie.title}  className="w-100"/>
                             <h3 className="h5">{movie.title}</h3>
-                        </div>
+                        </Link>
                     </div>
                 )}
             </div>

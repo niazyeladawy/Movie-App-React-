@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom';
 
 export default function Tv() {
     const [trendingTv, setTrendingTv] = useState([]);
@@ -27,10 +28,10 @@ export default function Tv() {
                 </div>
                 {trendingTv.map((tv , idx) =>
                 <div key={idx} className="col-md-3 mb-3">
-                    <div className="tv">
+                    <Link className="tv" to={`/show/${tv.id}`}> 
                         <img src={imgPrefix+tv.poster_path} alt={tv.name}  className="w-100"/>
                         <h3 className="h5">{tv.name}</h3>
-                    </div>
+                    </Link>
                 </div>
                 )}
             </div>

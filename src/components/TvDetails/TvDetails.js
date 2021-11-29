@@ -12,7 +12,6 @@ export default function TvDetails() {
     let imgPrefix = 'https://image.tmdb.org/t/p/w500/';
     let networkPath = 'https://www.themoviedb.org/t/p/h30';
 
-console.log(id);
     const fetchMovie = async () => {
         let { data } = await axios.get(`https://api.themoviedb.org/3/tv/${id}?api_key=37ded266a817b10c2533ed925229e1ee&language=en-US`);
         setMovie(data);
@@ -27,7 +26,7 @@ console.log(id);
 
     const fetchkeywords = async () => {
         let { data } = await axios.get(`https://api.themoviedb.org/3/tv/${id}/keywords?api_key=37ded266a817b10c2533ed925229e1ee`);
-        setKeywords(data.keywords);
+        setKeywords(data.results);
     }
 
     useEffect(() => {
@@ -37,10 +36,6 @@ console.log(id);
 
         // eslint-disable-next-line
     }, []);
-
-
-
-
 
     return (
 
@@ -91,7 +86,7 @@ console.log(id);
                     <div className="movie__details">
                         <p className="mb-3"><strong className="d-block">Status</strong>{movie.status}</p>
                         <p className="mb-3"><strong className="d-block">Original Language</strong>{movie.original_language}</p>
-                        <p className="mb-3"><strong className="d-block">Networks</strong>{movie.networks?.map((n)=> <img className='my-2' src={networkPath+n.logo_path} alt={n.name}/>)
+                        <p className="mb-3"><strong className="d-block">Networks</strong>{movie.networks?.map((n)=> <img key={n.id} className='my-2' src={networkPath+n.logo_path} alt={n.name}/>)
                         }</p>
                         
                         <p className="mb-3"><strong className="d-block">Type</strong>{movie.type}</p>

@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom';
 
 export default function People() {
     const [trendingPeople, setTrendingPeople] = useState([]);
@@ -28,10 +29,10 @@ export default function People() {
                 </div>
                 {trendingPeople.map((people , idx) =>
                 <div key={idx} className="col-md-3 mb-3">
-                    <div className="people">
+                    <Link className="people" to={`/actor/${people.id}`}>
                         <img src={imgPrefix+people.profile_path} alt={people.name}  className="w-100"/>
                         <h3 className="h5">{people.name}</h3>
-                    </div>
+                    </Link>
                 </div>
                 )}
             </div>

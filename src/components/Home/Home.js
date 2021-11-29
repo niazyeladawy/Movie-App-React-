@@ -48,10 +48,10 @@ export default function Home(props) {
                 </div>
                 {trendingTv.map((tv, idx) =>
                     <div key={idx} className="col-md-2 mb-3">
-                        <div className="tv">
+                        <Link className="tv" to={`/show/${tv.id}`}>
                             <img src={imgPrefix + tv.poster_path} alt={tv.name} className="w-100" />
                             <h3 className="h5">{tv.name}</h3>
-                        </div>
+                        </Link>
                     </div>
                 )}
             </div>
@@ -69,10 +69,10 @@ export default function Home(props) {
                 </div>
                 {trendingPeople.map((people, idx) =>
                     <div key={idx} className="col-md-2 mb-3">
-                        <div className="people">
+                        <Link className="people"  to={`/actor/${people.id}`}>
                             <img src={imgPrefix + people.profile_path} alt={people.name} className="w-100" />
                             <h3 className="h5">{people.name}</h3>
-                        </div>
+                        </Link>
                     </div>
                 )}
             </div>

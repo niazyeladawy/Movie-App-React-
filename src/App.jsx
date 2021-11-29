@@ -8,6 +8,7 @@ import MovieDetails from './components/MovieDetails/MovieDetails.js';
 import Movies from './components/Movies/Movies';
 import Navbar from './components/Navbar/Navbar';
 import People from './components/People/People';
+import PeopleDetails from './components/PeopleDetails/PeopleDetails';
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
 import Register from './components/Register/Register';
 import Tv from './components/Tv/Tv';
@@ -55,6 +56,7 @@ function App() {
           <ProtectedRoute path='/home' component={Home} loginUser={loginUser} contex={MoviesContextProvider}/> 
           <Route path="/show/:id" ><TvDetails/></Route>
           <Route path="/movie/:id" ><MovieDetails/></Route>
+          <Route path="/actor/:id" ><PeopleDetails/></Route>
           
           <Route path='/register' render={(props) => <Register {...props} />} />
           <Route path='/login' render={(props) => <Login {...props} getUserInfo={getUserInfo} />} />

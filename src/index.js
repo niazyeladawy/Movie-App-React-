@@ -11,7 +11,7 @@ import "react-alice-carousel/lib/alice-carousel.css";
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter basename='/#/'>
+    <BrowserRouter >
       <App />
     </BrowserRouter>
 

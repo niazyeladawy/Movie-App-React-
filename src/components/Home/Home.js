@@ -1,11 +1,12 @@
 import React, { useContext } from 'react'
 import { Link } from 'react-router-dom';
 import { MoviesContext } from '../../MoviesContext';
+import unavailableImage from '../../assets/poster-holder.jpg'
+
 export default function Home(props) {
 
     let { trendingMovies, trendingPeople, trendingTv } = useContext(MoviesContext)
     let imgPrefix = 'https://image.tmdb.org/t/p/w500/';
-
 
     return (
         <>
@@ -23,13 +24,18 @@ export default function Home(props) {
                 </div>
                 {trendingMovies.map((movie, idx) =>
 
-                    <div key={idx} className="col-md-2 mb-3" >
-                        
-                        <Link className="movie" to={`/movie/${movie.id}`}>
-                        <img src={imgPrefix + movie.poster_path} alt={movie.title} className="w-100" />
-                        <h3 className="h5">{movie.title}</h3>
+                    <div key={idx} className="col-md-2 mb-3 " >
+
+                        <Link className="movie position-relative d-block" to={`/movie/${movie.id}`}>
+                            <span className="position-absolute top-0 end-0  badge rounded-pill bg-danger">
+                                {
+                                    movie?.vote_average.toFixed(1)
+                                }
+                            </span>
+                            <img src={movie.poster_path ? (imgPrefix + movie.poster_path) : unavailableImage} alt={movie.title} className="w-100" />
+                            <h3 className="h5 mt-3">{movie.title}</h3>
                         </Link>
-                        
+
                     </div>
 
 
@@ -48,9 +54,14 @@ export default function Home(props) {
                 </div>
                 {trendingTv.map((tv, idx) =>
                     <div key={idx} className="col-md-2 mb-3">
-                        <Link className="tv" to={`/show/${tv.id}`}>
-                            <img src={imgPrefix + tv.poster_path} alt={tv.name} className="w-100" />
-                            <h3 className="h5">{tv.name}</h3>
+                        <Link className="tv position-relative d-block" to={`/show/${tv.id}`}>
+                            <span className="position-absolute top-0 end-0  badge rounded-pill bg-danger">
+                                {
+                                    tv?.vote_average.toFixed(1)
+                                }
+                            </span>
+                            <img src={tv.poster_path ? (imgPrefix + tv.poster_path) : unavailableImage} alt={tv.name} className="w-100" />
+                            <h3 className="h5 mt-3">{tv.name}</h3>
                         </Link>
                     </div>
                 )}
@@ -69,9 +80,10 @@ export default function Home(props) {
                 </div>
                 {trendingPeople.map((people, idx) =>
                     <div key={idx} className="col-md-2 mb-3">
-                        <Link className="people"  to={`/actor/${people.id}`}>
-                            <img src={imgPrefix + people.profile_path} alt={people.name} className="w-100" />
-                            <h3 className="h5">{people.name}</h3>
+                        <Link className="people position-relative d-block" to={`/actor/${people.id}`}>
+                            
+                            <img src={people.profile_path ? (imgPrefix + people.profile_path) : unavailableImage} alt={people.name} className="w-100" />
+                            <h3 className="h5 mt-3">{people.name}</h3>
                         </Link>
                     </div>
                 )}

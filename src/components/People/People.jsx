@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
+import unavailableImage from '../../assets/poster-holder.jpg'
 
 export default function People() {
     const [trendingPeople, setTrendingPeople] = useState([]);
@@ -30,7 +31,7 @@ export default function People() {
                 {trendingPeople.map((people , idx) =>
                 <div key={idx} className="col-md-3 mb-3">
                     <Link className="people" to={`/actor/${people.id}`}>
-                        <img src={imgPrefix+people.profile_path} alt={people.name}  className="w-100"/>
+                        <img src={people.profile_path ? imgPrefix+people.profile_path:unavailableImage} alt={people.name}  className="w-100"/>
                         <h3 className="h5">{people.name}</h3>
                     </Link>
                 </div>

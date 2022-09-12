@@ -28,7 +28,12 @@ export default function Tv() {
                 </div>
                 {trendingTv.map((tv , idx) =>
                 <div key={idx} className="col-md-3 mb-3">
-                    <Link className="tv" to={`/show/${tv.id}`}> 
+                    <Link className="tv d-block position-relative" to={`/show/${tv.id}`}> 
+                            <span className="position-absolute top-0 end-0  badge rounded-pill bg-danger">
+                                {
+                                    tv?.vote_average.toFixed(1)
+                                }
+                            </span>
                         <img src={imgPrefix+tv.poster_path} alt={tv.name}  className="w-100"/>
                         <h3 className="h5">{tv.name}</h3>
                     </Link>

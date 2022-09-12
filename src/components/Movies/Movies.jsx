@@ -28,9 +28,14 @@ export default function Movies() {
                 </div>
                 {trendingMovies.map((movie , idx) =>
                     <div key={idx} className="col-md-3 mb-3" >
-                        <Link className="movie" to={`/movie/${movie.id}`}>
+                        <Link className="movie d-block position-relative" to={`/movie/${movie.id}`}>
+                            <span className="position-absolute top-0 end-0  badge rounded-pill bg-danger">
+                                {
+                                    movie?.vote_average.toFixed(1)
+                                }
+                            </span>
                             <img src={imgPrefix+movie.poster_path} alt={movie.title}  className="w-100"/>
-                            <h3 className="h5">{movie.title}</h3>
+                            <h3 className="h5 mt-3">{movie.title}</h3>
                         </Link>
                     </div>
                 )}

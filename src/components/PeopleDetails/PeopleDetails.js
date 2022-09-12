@@ -28,7 +28,10 @@ export default function PeopleDetails() {
     return (
 
         <div className="moviedetails">
-            <div className="moviedetail__header py-4" >
+            {
+                movie.profile_path ? (
+                    <>
+                     <div className="moviedetail__header py-4" >
                 <div className="row align-items-center">
                     <div className="col-md-3">
                         <div className="border-5 overflow-hidden">
@@ -57,7 +60,11 @@ export default function PeopleDetails() {
                         <div className="mb-3"><strong className="d-block">Also Known As</strong>{movie.also_known_as?.map((as,idx)=> <p className="my-1" key={idx}>{as}</p>)}</div>
                     </div>
                 </div>
-            </div>
+            </div></>
+                ):
+                <h1 className='text-center'>Profile Not available</h1>
+            }
+           
         </div>
     )
 }

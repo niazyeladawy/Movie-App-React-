@@ -5,7 +5,9 @@ body {
   font-family: 'Montserrat', sans-serif;
 
 }
-
+.color-main{
+  color: red;
+}
 a{
   color:#fff;
   text-decoration: none;

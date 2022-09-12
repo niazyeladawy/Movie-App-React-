@@ -1,10 +1,15 @@
 import axios from 'axios';
 import Joi from 'joi';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
+import './login.css'
 
 export default function Login(props) {
  
-   
+    const ref = useRef(null);
+    const passRef = useRef(null)
+    const [copiedState, setcopiedState] = useState(false);
+    const [passwordcopiedState, setpasswordcopiedState] = useState(false);
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
     const [errorList, setErrorList] = useState([]);
@@ -67,8 +72,24 @@ export default function Login(props) {
         }
     }, [])
 
+    const handleClickEmail = (e)=>{
+        setcopiedState(true);
+        navigator.clipboard.writeText(ref.current.textContent.trim());
+        setTimeout(() => {
+            setcopiedState(false);
+        }, 2000);
+    }
+
+    const handleClickPassword= ()=>{
+        setpasswordcopiedState(true);
+        navigator.clipboard.writeText(passRef.current.textContent.trim());
+        setTimeout(() => {
+            setpasswordcopiedState(false);
+        }, 2000);
+    }
+
     return (
-        <div>
+        <div >
             <div className="py-4">
                 <h1 className="mb-4">Login</h1>
                 <form onSubmit={formSubmit}>
@@ -85,6 +106,25 @@ export default function Login(props) {
 
                     <button type="submit" className="btn btn-info mt-3 text-white">{loading ? <i className="fas fa-spinner  fa-spin"></i> : "Login"}</button>
                 </form>
+            </div>
+
+            <div className='mt-5'>
+                <h3>Hint, you can use this coordinates for login or register new user <Link className='color-main' to='/register'>Register</Link> </h3>
+
+                <div className='    '>
+                    <p className='mb-1'>Email:</p>
+                    <code className='bg-white p-2 d-flex justify-content-between align-items-center'  onClick={handleClickEmail} ref={ref} >
+                         admin10@admin.com   <i className="fas fa-copy fs-5 position-relative" style={{cursor:"pointer"}}>
+                            {copiedState ? <span className='position-absolute copied'>copied</span> :""}
+                         </i>
+                    </code>
+                    <p className='mb-1 mt-4'>Password:</p>
+                    <code className='bg-white p-2 d-flex justify-content-between align-items-center'  onClick={handleClickPassword} ref={passRef} >
+                         123456789   <i className="fas fa-copy fs-5 position-relative" style={{cursor:"pointer"}}>
+                            {passwordcopiedState ? <span className='position-absolute copied'>copied</span> :""}
+                         </i>
+                    </code>
+                </div>
             </div>
         </div>
     )

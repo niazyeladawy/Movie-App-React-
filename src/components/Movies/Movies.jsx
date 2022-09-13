@@ -1,8 +1,10 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
+import { titleChange } from '../../general functions/titleChange';
 
 export default function Movies() {
+    titleChange("Movies");
     const [trendingMovies, setTrendingMovies] = useState([]);
     let imgPrefix = 'https://image.tmdb.org/t/p/w500/';
     async function getTrendingMovies(){

@@ -2,8 +2,10 @@ import React, { useContext } from 'react'
 import { Link } from 'react-router-dom';
 import { MoviesContext } from '../../MoviesContext';
 import unavailableImage from '../../assets/poster-holder.jpg'
+import { titleChange } from '../../general functions/titleChange';
 
 export default function Home(props) {
+    titleChange("Home");
 
     let { trendingMovies, trendingPeople, trendingTv } = useContext(MoviesContext)
     let imgPrefix = 'https://image.tmdb.org/t/p/w500/';

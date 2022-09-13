@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router';
+import { titleChange } from '../../general functions/titleChange';
 import SimpleSlider from '../Slider/SimpleSlider ';
 
 export default function TvDetails() {
@@ -16,6 +17,7 @@ export default function TvDetails() {
         let { data } = await axios.get(`https://api.themoviedb.org/3/tv/${id}?api_key=37ded266a817b10c2533ed925229e1ee&language=en-US`);
         setMovie(data);
         setGenres(data.genres);
+        titleChange(`Tv Details ${data.title}`);
     }
 
     const fetchCast = async () => {

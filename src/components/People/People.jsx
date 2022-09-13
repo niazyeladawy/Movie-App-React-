@@ -2,8 +2,11 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import unavailableImage from '../../assets/poster-holder.jpg'
+import { titleChange } from '../../general functions/titleChange';
 
 export default function People() {
+    titleChange("People");  
+
     const [trendingPeople, setTrendingPeople] = useState([]);
     let imgPrefix = 'https://image.tmdb.org/t/p/w500/';
     async function getTrendingPeople(){

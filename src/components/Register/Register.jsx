@@ -1,10 +1,11 @@
 import axios from 'axios';
 import Joi from 'joi';
 import React, { useState } from 'react';
+import { titleChange } from '../../general functions/titleChange';
 
 export default function Register(props) {
     
-
+    titleChange("Register");
     
 
     let [user, setUser] = useState({first_name:"",last_name:"",email:"",password:"",age:""});

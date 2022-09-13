@@ -1,9 +1,12 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router';
+import { titleChange } from '../../general functions/titleChange';
 import SimpleSlider from '../Slider/SimpleSlider ';
 
 export default function MovieDetails() {
+  
+
   const { id } = useParams();
   const [movie, setMovie] = useState([]);
   const [genres, setGenres] = useState([]);
@@ -16,12 +19,13 @@ export default function MovieDetails() {
     let { data } = await axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=37ded266a817b10c2533ed925229e1ee&language=en-US`);
     setMovie(data);
     setGenres(data.genres);
+    titleChange(`Movie Details ${data.title}` );
   }
 
   const fetchCast = async () => {
     let { data } = await axios.get(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=37ded266a817b10c2533ed925229e1ee&language=en-US`);
     setCast(data.cast);
-
+    
   }
 
   const fetchkeywords = async () => {

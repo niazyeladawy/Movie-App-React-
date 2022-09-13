@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router';
+import { titleChange } from '../../general functions/titleChange';
 import SimpleSlider from '../Slider/SimpleSlider ';
 
 export default function PeopleDetails() {
@@ -12,6 +13,7 @@ export default function PeopleDetails() {
     const fetchMovie = async () => {
         let { data } = await axios.get(`https://api.themoviedb.org/3/person/${id}?api_key=37ded266a817b10c2533ed925229e1ee&language=en-US`);
         setMovie(data);
+        titleChange(`Actor Details ${data.title}`);
     }
     const fetchCredits = async () => {
         let { data } = await axios.get(`https://api.themoviedb.org/3/person/${id}/combined_credits?api_key=37ded266a817b10c2533ed925229e1ee&language=en-US`);

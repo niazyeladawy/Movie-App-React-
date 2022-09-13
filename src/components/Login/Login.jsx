@@ -2,6 +2,7 @@ import axios from 'axios';
 import Joi from 'joi';
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { titleChange } from '../../general functions/titleChange';
 import './login.css'
 
 export default function Login(props) {
@@ -13,8 +14,9 @@ export default function Login(props) {
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
     const [errorList, setErrorList] = useState([]);
-
     let [user, setUser] = useState({email:'',password:''});
+
+    titleChange("Login");
 
     function getUser(e){
         let myUser = {...user};

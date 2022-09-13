@@ -1,8 +1,11 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
+import { titleChange } from '../../general functions/titleChange';
 
 export default function Tv() {
+    titleChange("TV Shows");
+
     const [trendingTv, setTrendingTv] = useState([]);
     let imgPrefix = 'https://image.tmdb.org/t/p/w500/';
     async function getTrendingTv(){
